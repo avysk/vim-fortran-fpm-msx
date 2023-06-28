@@ -44,6 +44,7 @@ endfunction
 function fortran#fpm#msx#Setup()
   if exists(":FullscreenStart")
     FullscreenStart
+    sleep 1
   else
     call warning("vim-fullscreen is not available")
   endif
