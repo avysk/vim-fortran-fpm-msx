@@ -42,6 +42,12 @@ function! <SID>DebugKeyBindings()
 endfunction
 
 function fortran#fpm#msx#Setup()
+  if exists(":FullscreenStart")
+    FullscreenStart
+  else
+    call warning("vim-fullscreen is not available")
+  endif
+
   try
     colorscheme msx
   catch /E185/
@@ -57,12 +63,6 @@ function fortran#fpm#msx#Setup()
     echoerr "vim-fortran-fpm is not available."
     return 0
   endtry
-
-  if exists(":FullscreenStart")
-    FullscreenStart
-  else
-    call warning("vim-fullscreen is not available")
-  endif
 
   if exists("g:fortran_fpm_msx_font")
     let cmd = "set guifont=" .. g:fortran_fpm_msx_font
