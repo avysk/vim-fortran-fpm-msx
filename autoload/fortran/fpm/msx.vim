@@ -46,7 +46,7 @@ function fortran#fpm#msx#Setup()
     FullscreenStart
     sleep 1
   else
-    call warning("vim-fullscreen is not available")
+    call s:warning("vim-fullscreen is not available")
   endif
 
   try
@@ -69,7 +69,7 @@ function fortran#fpm#msx#Setup()
     let cmd = "set guifont=" .. g:fortran_fpm_msx_font
     silent execute cmd
   else
-    call warning("g:fortran_fpm_msx_font is not set")
+    call s:warning("g:fortran_fpm_msx_font is not set")
   endif
 
   set guioptions-=e
