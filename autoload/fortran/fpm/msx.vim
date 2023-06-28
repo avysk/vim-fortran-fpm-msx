@@ -4,7 +4,7 @@ function s:warning(msg)
   echohl None
 endfunction
 
-function! s:RunDebug()
+function! fortran#fpm#msx#RunDebug()
         " It seems that :Run command is broken after setting arguments
         if exists("g:vim_fortran_fpm_run_args")
                 let cmd = "Arguments " .. g:vim_fortran_fpm_run_args
@@ -37,7 +37,7 @@ function! <SID>DebugKeyBindings()
         nnoremap <silent> <S-F3> :Step<CR>
         nnoremap <silent> <F4> :Cont<CR>
         nnoremap <silent> <S-F4> :Finish<CR>
-        nnoremap <silent> <F5> :call s:RunDebug()<CR>
+        nnoremap <silent> <F5> :call fortran#fpm#msx#RunDebug()<CR>
         nnoremap <silent> <S-F5> :call fortran#fpm#SetRunArgs()<CR>
 endfunction
 
