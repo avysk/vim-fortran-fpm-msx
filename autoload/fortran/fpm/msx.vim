@@ -72,6 +72,18 @@ function fortran#fpm#msx#Setup()
     call s:warning("g:fortran_fpm_msx_font is not set.")
   endif
 
+  if exists("g:fortran_fpm_msx_tw")
+    let &tw = g:fortran_fpm_msx_tw
+  else
+    if !&tw
+      call s:warning("g:fortran_fpm_msx_tw is not set and textwidth is zero.")
+    endif
+  endif
+
+  if &tw
+    set colorcolumn=&tw
+  endif
+
   set guioptions-=e
   set showtabline=2
 
