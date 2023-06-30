@@ -81,7 +81,7 @@ function fortran#fpm#msx#Setup()
   endif
 
   if &tw
-    set colorcolumn=&tw
+    let &colorcolumn=&tw
   endif
 
   set guioptions-=e
