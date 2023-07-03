@@ -21,8 +21,7 @@ function! fortran#fpm#msx#FirstError()
       let sT = get(g:, "vim_fortran_fpm_success_time", 1000)
 
       let msg = "Success!"
-      call popup_notification(msg, #{line: 0, col: 0,
-        highlight: sHl, time: sT})
+      call popup_notification(msg, #{line: 0, col: 0, highlight: sHl, time: sT})
   endtry
 endfunction
 
