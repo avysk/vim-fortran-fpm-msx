@@ -65,6 +65,8 @@ function fortran#fpm#msx#Setup()
     return 0
   endtry
 
+  call fortran#fpm#Setup()
+
   if exists("g:fortran_fpm_msx_font")
     let cmd = "set guifont=" .. g:fortran_fpm_msx_font
     silent execute cmd
