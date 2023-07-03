@@ -13,12 +13,25 @@ function! fortran#fpm#msx#RunDebug()
         call TermDebugSendCommand("run")
 endfunction
 
+function! fortran#fpm#msx#FirstError()
+  try
+    silent cfirst
+  catch /E42/
+      let sHl = get(g:, "vim_fortran_fpm_success_hl", "Comment")
+      let sT = get(g:, "vim_fortran_fpm_success_time", 1000)
+
+      let msg = "Success!"
+      call popup_notification(msg, #{line: 0, col: 0,
+        highlight: sHl, time: sT})
+  endtry
+endfunction
+
 function! <SID>EditKeyBindings()
         set tabline=F1\ clean\ F2\ build\ F3\ args(toml)\ F4\ test(debug)\ F5\ run
         nnoremap <silent> <F1> :silent make clean --skip<CR>
         nnoremap <silent> <S-F1> :silent make clean --all<CR>
-        nnoremap <silent> <F2> :silent make build <BAR> cwindow<CR>
-        nnoremap <silent> <S-F2> :silent make build --profile release <BAR> cwindow<CR>
+        nnoremap <silent> <F2> :silent make build <BAR> cwindow <BAR> call fortran#fpm#msx#FirstError()<CR>
+        nnoremap <silent> <S-F2> :silent make build --profile release <BAR> cwindow <BAR> call fortran#fpm#msx#FirstError()<CR>
         nnoremap <silent> <F3> :call fortran#fpm#SetRunArgs()<CR>
         nnoremap <silent> <S-F3> :call fortran#fpm#EditToml()<CR>
         nnoremap <silent> <F4> :call fortran#fpm#RunTests()<CR>
